@@ -1,0 +1,30 @@
+Feature: Crear un Feature
+
+  @Features @Regression @Smoke @CreateFeature @EliminarCreacionesWeb @Automated
+  Scenario Outline: Crear un archivo feature exitosamente (<idioma>) (<gestor>)
+    Given Existe un proyecto Proyecto de Automation creado por automation.ltm y 1234 con el repositorio RepositorioFolderFeatureAutomation asociado con el gestor de <gestor>
+    And el cliente está logueado con el usuario automation.ltm y contraseña 1234
+    And el cliente se encuentra en la pantalla Features del proyecto Proyecto de Automation
+    And el cliente se encuentra en el Repositorio RepositorioFolderFeatureAutomation y Rama main
+    And el idioma del sistema está en <idioma>
+    And selecciona del directorio feature la opcion <opcion>
+    And ingresa el nombre del archivo: FeatureAutomation
+    Then se visualiza el archivo: FeatureAutomation dentro de la lista de archivos
+    And se visualiza un icono + a la derecha del archivo
+    And se visualiza el botón Crear commit
+
+    @ES
+    Examples:
+      | idioma | opcion        | gestor       |
+      | ES     | Crear archivo | Gitlab       |
+      | ES     | Crear archivo | Azure DevOps |
+      | ES     | Crear archivo | Bitbucket    |
+      | ES     | Crear archivo | Github       |
+
+    @EN
+    Examples:
+      | idioma | opcion      | gestor       |
+      | EN     | Create file | Gitlab       |
+      | EN     | Create file | Azure DevOps |
+      | EN     | Create file | Bitbucket    |
+      | EN     | Create file | Github       |
